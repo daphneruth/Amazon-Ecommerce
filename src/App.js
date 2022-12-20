@@ -3,9 +3,9 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        
+    <div>
+      <header >
+        <a href ="/"> Amazon </a>
       </header>
     </div>
   );
