@@ -7,6 +7,9 @@ function App() {
       <header >
         <a href ="/"> Amazon </a>
       </header>
+      <main>
+        list products
+      </main>
     </div>
   );
 }
