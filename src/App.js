@@ -1,4 +1,4 @@
-
+import data from './data';
 import './App.css';
 
 function App() {
@@ -8,7 +8,10 @@ function App() {
         <a href ="/"> Amazon </a>
       </header>
       <main>
-        list products
+        <h1>Featured Products</h1>
+        {
+
+        }
       </main>
     </div>
   );
