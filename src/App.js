@@ -1,8 +1,10 @@
 import data from './data';
+import { ReactDOM } from 'react';
 import './App.css';
 
 function App() {
   return (
+    
     <div>
       <header >
         <a href ="/"> Amazon </a>
