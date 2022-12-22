@@ -1,9 +1,11 @@
-import React from 'react'
+import {useParams} from 'react-router-dom';
 
 function productRoute() {
+    const params =useParams();
+    const {slug}= params;
   return (
-    <div>productRoute</div>
+    <h1>{slug}</h1>
   )
 }
 
-export default productRoute
+export default productRoute;
