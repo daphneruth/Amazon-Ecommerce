@@ -1,10 +1,11 @@
 import data from './data';
 import { ReactDOM } from 'react';
+import {BrowserRouter } from 'react-router-dom ';
 import './App.css';
 
 function App() {
   return (
-    
+    <BrowserRouter>
     <div>
       <header >
         <a href ="/"> Amazon </a>
@@ -22,12 +23,14 @@ function App() {
             <div className="product-info">
             <p>{product.name}</p>
             <p>{product.price}</p>
+            <button>Add to Cart</button>
             </div>
           </div>))}
       
       </div>
       </main>
     </div>
+    </BrowserRouter>
   );
 }
 
