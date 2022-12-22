@@ -1,6 +1,6 @@
 import data from './data';
 import { ReactDOM } from 'react';
-import {BrowserRouter } from 'react-router-dom ';
+import {BrowserRouter, Route, Routes } from 'react-router-dom ';
 import './App.css';
 
 function App() {
@@ -11,26 +11,10 @@ function App() {
         <a href ="/"> Amazon </a>
       </header>
       <main>
-        <Route>
+        <Routes>
           <Route path="/" element={<HomeRoute/>} />
-        </Route>
-        <h1>Featured Products</h1>
-         
-  
-          <div  className='products'>
-            {data.products.map(product =>(
-            <div className="product" key={product.slug}>
-              <a href={`/product/${product.slug}`}>
-            <img src={product.image} alt={product.name} />
-            </a>
-            <div className="product-info">
-            <p>{product.name}</p>
-            <p>{product.price}</p>
-            <button>Add to Cart</button>
-            </div>
-          </div>))}
-      
-      </div>
+        </Routes>
+       
       </main>
     </div>
     </BrowserRouter>
