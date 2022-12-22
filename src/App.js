@@ -12,7 +12,7 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<HomeRoute/>} />
+          <Route path="/product/:slug" element={<HomeRoute/>} />
           <Route path="/" element={<ProductRoute/>} />
         </Routes>
        
