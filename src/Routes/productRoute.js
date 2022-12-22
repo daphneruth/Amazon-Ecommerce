@@ -1,6 +1,6 @@
 import {useParams} from 'react-router-dom';
 
-function productRoute() {
+function ProductRoute() {
     const params =useParams();
     const {slug}= params;
   return (
@@ -8,4 +8,4 @@ function productRoute() {
   )
 }
 
-export default productRoute;
+export default ProductRoute;

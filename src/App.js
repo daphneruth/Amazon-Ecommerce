@@ -1,6 +1,8 @@
 import data from './data';
 import { ReactDOM } from 'react';
 import {BrowserRouter, Route, Routes } from 'react-router-dom ';
+import HomeRoute from './Routes/HomeRoute';
+import ProductRoute from './Routes/productRoute';
 import './App.css';
 
 function App() {
