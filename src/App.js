@@ -11,6 +11,9 @@ function App() {
         <a href ="/"> Amazon </a>
       </header>
       <main>
+        <Route>
+          <Route path="/" element={<HomeRoute/>} />
+        </Route>
         <h1>Featured Products</h1>
          
   
