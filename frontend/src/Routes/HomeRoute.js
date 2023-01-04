@@ -5,6 +5,14 @@ import data from '../data'
 
 function HomeRoute() {
   const [products, setProducts] = useState([])
+
+   useEffect(() =>{
+    const fetchData = async ()=>{
+      const results = axios.get('api/products')
+      setProducts(results.data)
+    };
+    fetchData();
+   })
   return (
     <div>
        <h1>Featured Products</h1>
