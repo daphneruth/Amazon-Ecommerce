@@ -1,8 +1,10 @@
+import {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
-import React from 'react'
+import axios from 'axios'
 import data from '../data'
 
 function HomeRoute() {
+  const [products, setProducts] = useState([])
   return (
     <div>
        <h1>Featured Products</h1>
