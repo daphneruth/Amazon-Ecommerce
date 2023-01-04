@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom ';
+import { BrowserRouter, Route,Link, Routes } from 'react-router-dom ';
 import HomeRoute from './Routes/HomeRoute';
 import ProductRoute from './Routes/ProductRoute';
 
@@ -7,7 +7,7 @@ function App() {
     <BrowserRouter>
     <div>
       <header >
-        <a href ="/"> Amazon </a>
+        <Link to ="/"> Amazon </Link>
       </header>
       <main>
         <Routes>
