@@ -1,4 +1,3 @@
-
 import { BrowserRouter, Route, Routes } from 'react-router-dom ';
 import HomeRoute from './Routes/HomeRoute';
 import ProductRoute from './Routes/ProductRoute';
