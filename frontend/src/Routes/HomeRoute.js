@@ -65,14 +65,13 @@ function HomeRoute() {
                   <p>{product.name}</p>
                     </Link>
                 
-                  <p>{product.price}</p>
-                  <button>Add to Cart</button>
-                  </div>
-                </div>))
-
-              )}
+                 </div>
+                 </div>
+                ) )
       
-      </div>
+            )}
+            </div>
+      
     </div>
   )
 }
