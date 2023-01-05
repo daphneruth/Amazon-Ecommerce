@@ -30,7 +30,7 @@ function HomeRoute() {
 
    useEffect(() =>{
     const fetchData = async ()=>{
-      const results = axios.get('api/products')
+      const results =await axios.get('api/products')
       setProducts(results.data)
     };
     fetchData();
