@@ -1,6 +1,7 @@
-import {useState, useEffect} from 'react'
+import {useReducer, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+
 //import data from '../data'
 
 
@@ -18,8 +19,14 @@ const reducer = (state, action) => {
 };
 
 function HomeRoute() {
-  
+
  // const [products, setProducts] = useState([])
+ 
+  const [{ loading, error, products }, dispatch]=useReducer(reducer, {
+    products: [],
+    loading: true,
+    error: "",
+  });
 
    useEffect(() =>{
     const fetchData = async ()=>{
