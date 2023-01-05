@@ -2,6 +2,7 @@ import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import HomeRoute from './Routes/HomeRoute';
 import ProductRoute from './Routes/ProductRoute';
 import Navbar from 'react-bootstrap/Navbar';
+import { LinkContainer } from 'react-router-bootstrap';
 
 function App() {
   return (
@@ -9,11 +10,13 @@ function App() {
     <div>
       <header >
       <Navbar bg="dark" variant="dark" expand="lg">
-            <Container>
+      <Container>
+        <Linkcontainer to ="/">
             <Navbar.Brand>amazona</Navbar.Brand>
-              </Container>
-
-        <Link to ="/"> Amazon </Link>
+            </Linkcontainer>
+            </Container>
+        </Navbar>
+        
       </header>
       <main>
         <Routes>
