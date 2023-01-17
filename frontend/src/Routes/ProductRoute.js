@@ -3,6 +3,8 @@ import {useParams} from 'react-router-dom';
 import {useReducer, useEffect} from 'react'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import { ListGroup } from 'react-bootstrap';
+import Rating from '../Components/Rating';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -56,7 +58,20 @@ function ProductRoute() {
               alt={product.name}
             </img>
       </Col>
-      <Col md={3}></Col>
+      <Col md={3}>
+        <ListGroup  variant= "flush">
+          <ListGroup.Item >
+            <h1>{product.name}</h1>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Rating>
+              rating =  {product.rating}
+              numReviews={product.numReviews}
+              </Rating>
+              
+            </ListGroup.Item>
+        </ListGroup>
+      </Col>
       <Col md={3}></Col>
     </Row>
   )
