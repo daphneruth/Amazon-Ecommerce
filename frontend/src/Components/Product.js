@@ -1,4 +1,5 @@
 import { Button } from "bootstrap";
+import Rating from "./Rating";
 
 function Product (props) {
     const { product} = props;
