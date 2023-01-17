@@ -3,7 +3,7 @@ import { Button } from "bootstrap";
 function Product (props) {
     const { product} = props;
     return(
-        <Card  key={product.slug}>
+        <Card >
         <Link to={`/product/${product.slug}`}>
           <img src={product.image} alt={product.name} />
       </Link>
