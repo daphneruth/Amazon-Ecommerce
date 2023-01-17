@@ -19,6 +19,10 @@ code {
 main{
   flex: 1;
 }
+.btn-primary{
+  background-color: #f0c040;
+  color: #000000;
+}
 .products{
   display: flex;
   flex-wrap: wrap;
@@ -32,6 +36,9 @@ main{
 .product img {
   width: 100%;
   max-width: 400px;
+}
+.rating span {
+  color: #ffc000;
 }
 .product-info { 
   padding: 1rem;
