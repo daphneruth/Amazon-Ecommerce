@@ -44,6 +44,9 @@ function HomeRoute() {
   }, []);
   return (
     <div>
+       <Helmet>
+                <title>Amazon</title>
+              </Helmet>
       <h1>Featured Products</h1>
       <div className="products">
         {loading ? (

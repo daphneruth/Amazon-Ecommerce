@@ -3,7 +3,7 @@ import HomeRoute from './Routes/HomeRoute';
 import ProductRoute from './Routes/ProductRoute';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Navbar';
-import { LinkContainer } from 'react-router-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';                
 
 
 function App() {
@@ -13,9 +13,9 @@ function App() {
       <header >
       <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
-        <Linkcontainer to ="/">
+        <LinkContainer to ="/">
             <Navbar.Brand>amazona</Navbar.Brand>
-            </Linkcontainer>
+            </LinkContainer>
             </Container>
         </Navbar>
         
