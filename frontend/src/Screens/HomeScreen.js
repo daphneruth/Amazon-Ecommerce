@@ -22,7 +22,7 @@ const reducer = (state, action) => {
   }
 };
 
-function HomeRoute() {
+function HomeScreen() {
   // const [products, setProducts] = useState([])
 
   const [{ loading, error, products }, dispatch] = useReducer((reducer), {
@@ -68,4 +68,4 @@ function HomeRoute() {
   );
 }
 
-export default HomeRoute;
+export default HomeScreen;

@@ -23,7 +23,7 @@ const reducer = (state, action) => {
   }
 };
 
-function ProductRoute() {
+function ProductScreen() {
   const params = useParams();
   const { slug } = params;
 
@@ -122,4 +122,4 @@ function ProductRoute() {
   );
 }
 
-export default ProductRoute;
+export default ProductScreen;

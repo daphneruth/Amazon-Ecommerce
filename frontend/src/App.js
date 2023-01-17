@@ -1,9 +1,11 @@
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-import HomeRoute from './Screens/HomeRoute';
-import ProductRoute from './Screens/ProductRoute';
+import HomeScreen from './Screens/HomeScreen';
+import ProductScreen from './Screens/ProductScreen';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Navbar';
 import { LinkContainer } from 'react-router-bootstrap';                
+//import ProductScreen from '../../../mern-amazona/frontend/src/screens/ProductScreen';
+//import HomeScreen from '../../../mern-amazona/frontend/src/screens/HomeScreen';
 
 
 function App() {
@@ -23,8 +25,8 @@ function App() {
       <main>
         <Container  className="mt-3">
         <Routes>
-          <Route path="/product/:slug" element={<ProductRoute/>} />
-          <Route path="/" element={<HomeRoute/>} />
+          <Route path="/product/:slug" element={<ProductScreen/>} />
+          <Route path="/" element={<HomeScreen/>} />
         </Routes>
        
         </Container>
