@@ -21,12 +21,21 @@ function App() {
         
       </header>
       <main>
+        <Container>
         <Routes>
           <Route path="/product/:slug" element={<HomeRoute/>} />
           <Route path="/" element={<ProductRoute/>} />
         </Routes>
        
+        </Container>
+       
       </main>
+      <footer>
+        <div>
+          All rights reserved.
+        </div>
+      </footer>
+    
     </div>
     </BrowserRouter>
   );
