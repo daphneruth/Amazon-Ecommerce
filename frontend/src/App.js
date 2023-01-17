@@ -21,7 +21,7 @@ function App() {
         
       </header>
       <main>
-        <Container>
+        <Container  className="mt-3">
         <Routes>
           <Route path="/product/:slug" element={<HomeRoute/>} />
           <Route path="/" element={<ProductRoute/>} />
