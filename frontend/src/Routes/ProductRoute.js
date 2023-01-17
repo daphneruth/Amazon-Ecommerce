@@ -70,6 +70,8 @@ function ProductRoute() {
               </Rating>
               
             </ListGroup.Item>
+            <ListGroup.Item>price :${product.price}</ListGroup.Item>
+            <ListGroup.Item>Description :${product.description}</ListGroup.Item>
         </ListGroup>
       </Col>
       <Col md={3}></Col>
