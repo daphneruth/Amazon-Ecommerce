@@ -58,7 +58,7 @@ function HomeRoute() {
               <Row>
                 { products.map(product =>(
                   <Col  sm={6} md={4} lg={3}>
-                   
+                   <Product product={product}></Product>
                   </Col>
                 
                  ))}
