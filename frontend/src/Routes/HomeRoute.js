@@ -4,6 +4,7 @@ import axios from 'axios'
 import {logger }from  "use-reducer-logger"
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Product from '../Components/Product'
 
 //creating reducer function
 

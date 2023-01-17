@@ -1,22 +1,22 @@
+import { Button } from "bootstrap";
+
 function Product (props) {
     const { product} = props;
     return(
-        <div className="product" key={product.slug}>
+        <Card  key={product.slug}>
         <Link to={`/product/${product.slug}`}>
           <img src={product.image} alt={product.name} />
       </Link>
-      <div className="product-info">
+      <card.Body>
 
       <Link to={`/product/${product.slug}`}>
-      <p>{product.name}</p>
+      <Card.Title>{product.name}</Card.Title>
         </Link>
-        <p>
-        <strong>${product.price}</strong>
-        </p>
-        <button>Add to cart</button>
-        
-        </div>
-        </div>
+        <Card.Text>${product.price}</Card.Text>
+        <Button>Add to Cart</Button>
+     </card.Body>
+     </Card>
+
     )
 }
 export default Product
