@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom';
 import {useReducer, useEffect} from 'react'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { ListGroup } from 'react-bootstrap';
+import ListGroup  from 'react-bootstrap/ListGroup';
 import Rating from '../Components/Rating';
 
 const reducer = (state, action) => {
@@ -71,7 +71,8 @@ function ProductRoute() {
               
             </ListGroup.Item>
             <ListGroup.Item>price :${product.price}</ListGroup.Item>
-            <ListGroup.Item>Description :${product.description}</ListGroup.Item>
+            <ListGroup.Item>Description :
+              <p>{product.description}</p></ListGroup.Item>
         </ListGroup>
       </Col>
       <Col md={3}></Col>
