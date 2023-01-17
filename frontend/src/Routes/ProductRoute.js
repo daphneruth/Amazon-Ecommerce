@@ -1,4 +1,8 @@
+import axios from 'axios';
 import {useParams} from 'react-router-dom';
+import {useReducer, useEffect} from 'react'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 const reducer = (state, action) => {
   switch (action.type) {
