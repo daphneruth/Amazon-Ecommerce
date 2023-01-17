@@ -57,7 +57,7 @@ function HomeRoute() {
               :(
               <Row>
                 { products.map(product =>(
-                  <Col>
+                  <Col  sm={6} md={4} lg={3}>
                     <div className="product" key={product.slug}>
                     <Link to={`/product/${product.slug}`}>
                       <img src={product.image} alt={product.name} />
