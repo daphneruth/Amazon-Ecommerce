@@ -49,7 +49,13 @@ function ProductRoute() {
   
   ) : (
     <Row>
-      <Col md={6}></Col>
+      <Col md={6}>
+      <img
+            className="img-large">
+              src={product.image}
+              alt={product.name}
+            </img>
+      </Col>
       <Col md={3}></Col>
       <Col md={3}></Col>
     </Row>
