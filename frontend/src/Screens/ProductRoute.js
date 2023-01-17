@@ -8,6 +8,7 @@ import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
 import Rating from "../Components/Rating";
 import { Helmet } from 'react-helmet-async';
+import Card from 'react-bootstrap/Card';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -50,7 +51,11 @@ function ProductRoute() {
   ) : error ? (
     <div>error</div>
   ) : (
+    <div>
+      <h1>{slug}</h1>
+  
     <Row>
+
       <Col md={6}>
         <img className="img-large">
           src={product.image}
@@ -102,7 +107,7 @@ function ProductRoute() {
                 {product.countInStock > 0 && (
                   <ListGroup.Item>
                     <div className="d-grid">
-                      <Button onClick={addToCartHandler} variant="primary">
+                      <Button  variant="primary">
                         Add to Cart
                       </Button>
                     </div>
@@ -113,6 +118,7 @@ function ProductRoute() {
         </Card>
       </Col>
     </Row>
+    </div>
   );
 }
 

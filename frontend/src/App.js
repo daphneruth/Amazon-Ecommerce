@@ -1,6 +1,6 @@
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-import HomeRoute from './Routes/HomeRoute';
-import ProductRoute from './Routes/ProductRoute';
+import HomeRoute from './Screens/HomeRoute';
+import ProductRoute from './Screens/ProductRoute';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Navbar';
 import { LinkContainer } from 'react-router-bootstrap';                
@@ -23,8 +23,8 @@ function App() {
       <main>
         <Container  className="mt-3">
         <Routes>
-          <Route path="/product/:slug" element={<HomeRoute/>} />
-          <Route path="/" element={<ProductRoute/>} />
+          <Route path="/product/:slug" element={<ProductRoute/>} />
+          <Route path="/" element={<HomeRoute/>} />
         </Routes>
        
         </Container>

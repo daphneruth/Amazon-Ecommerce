@@ -1,6 +1,8 @@
 import { Button } from "bootstrap";
+import Card from 'react-bootstrap/Card';
 import Rating from "./Rating";
 import { Link } from 'react-router-dom'
+
 
 function Product (props) {
     const { product} = props;
