@@ -47,6 +47,15 @@ function ProductScreen() {
     fetchData();
   }, [slug]);
 
+  const {state, dispatch: ctxDispatch} = useContext()
+const addToCartHandler=() => {
+
+  ctxDispatch({
+    type: 'CART_ADD_ITEM',
+    payload: {...ProductScreen,quantity: 1},
+  })
+}
+
   return loading ? (
     <LoadingBox />
     ) : error ? (
@@ -108,7 +117,7 @@ function ProductScreen() {
                 {product.countInStock > 0 && (
                   <ListGroup.Item>
                     <div className="d-grid">
-                      <Button  variant="primary">
+                      <Button onClick={addToCartHandler} variant="primary">
                         Add to Cart
                       </Button>
                     </div>
