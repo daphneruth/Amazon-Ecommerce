@@ -48,6 +48,7 @@ function ProductScreen() {
   }, [slug]);
 
   const {state, dispatch: ctxDispatch} = useContext()
+  
 const addToCartHandler=() => {
 
   ctxDispatch({
