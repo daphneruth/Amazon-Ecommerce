@@ -5,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Navbar";
 import { LinkContainer } from "react-router-bootstrap";
 import { Nav } from "react-bootstrap";
+import CartScreen from "./Screens/CartScreen";
 
 function App() {
   return (
@@ -33,7 +34,9 @@ function App() {
           <Container className="mt-3">
             <Routes>
             <Route path="/products/:slug" element={<ProductScreen />} />
-              <Route path="/" element={<HomeScreen />} />
+            <Route path="/" element={<HomeScreen />} />
+            <Route path="/cart" element={<CartScreenScreen />} />
+             
             </Routes>
           </Container>
         </main>
