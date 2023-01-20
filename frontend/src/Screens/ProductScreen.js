@@ -47,10 +47,12 @@ function ProductScreen() {
     fetchData();
   }, [slug]);
 
-  const {state, dispatch: ctxDispatch} = useContext()
+  const {state, dispatch: ctxDispatch} = useContext(Store)
   
-const addToCartHandler=() => {
-
+const addToCartHandler= async() => {
+   const existItem = cart.cartItems.find((x) => x.id ===product.id);
+   const quantity= existItem ? existItem.quantity + 1 :1
+   const {data} = await axios.get (`/api/product/${product.id}`)
   ctxDispatch({
     type: 'CART_ADD_ITEM',
     payload: {...ProductScreen,quantity: 1},
