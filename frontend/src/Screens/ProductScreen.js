@@ -59,7 +59,7 @@ const addToCartHandler= async() => {
    }
   ctxDispatch({
     type: 'CART_ADD_ITEM',
-    payload: {...ProductScreen,quantity: 1},
+    payload: {...ProductScreen,quantity},
   })
 }
 
