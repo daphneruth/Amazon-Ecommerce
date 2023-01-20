@@ -53,6 +53,10 @@ const addToCartHandler= async() => {
    const existItem = cart.cartItems.find((x) => x.id ===product.id);
    const quantity= existItem ? existItem.quantity + 1 :1
    const {data} = await axios.get (`/api/product/${product.id}`)
+   if(data.countInStock < quantity) {
+    window.alert("sorry. Product out of stock")
+    return;
+   }
   ctxDispatch({
     type: 'CART_ADD_ITEM',
     payload: {...ProductScreen,quantity: 1},
