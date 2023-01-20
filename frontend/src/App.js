@@ -4,6 +4,7 @@ import ProductScreen from "./Screens/ProductScreen";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Navbar";
 import { LinkContainer } from "react-router-bootstrap";
+import { Nav } from "react-bootstrap";
 
 function App() {
   return (
@@ -16,6 +17,16 @@ function App() {
                 <Navbar.Brand>amazona</Navbar.Brand>
               </LinkContainer>
             </Container>
+            <Nav className="me-auto  w-100  justify-content-end">
+                  <Link to="/cart" className="nav-link">
+                    Cart
+                    {cart.cartItems.length > 0 && (
+                      <Badge pill bg="danger">
+                        {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                      </Badge>
+                    )}
+                  </Link>
+                  </Nav>
           </Navbar>
         </header>
         <main>
