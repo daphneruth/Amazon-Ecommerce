@@ -31,12 +31,13 @@ function HomeScreen() {
     const fetchData = async () => {
       dispatch({ type: 'FETCH_REQUEST' });
       try {
-        const result = await axios.get('/api/products');
+        const result = await axios.get('/api/prod');
+        
         dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
       } catch (err) {
         dispatch({ type: 'FETCH_FAIL', payload: err.message });
       }
-      // setProducts(result.data);
+      //setProducts(result.data);
     };
     fetchData();
   }, []);

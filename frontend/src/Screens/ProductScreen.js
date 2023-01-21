@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import { useContext, useEffect, useReducer } from 'react';
 import { useParams } from 'react-router-dom';
@@ -9,10 +8,10 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
-import Rating from '../components/Rating';
+import Rating from '../Components/Rating'
 import { Helmet } from 'react-helmet-async';
-import LoadingBox from '../components/LoadingBox';
-import MessageBox from '../components/MessageBox';
+import LoadingBox from '../Components/LoadingBox';
+import MessageBox from '../Components/MessageBox';
 import { getError } from '../utils';
 import { Store } from '../Store';
 const reducer = (state, action) => {
@@ -55,7 +54,8 @@ function ProductScreen() {
   const addToCartHandler = async () => {
     const existItem = cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
-    const { data } = await axios.get(`/api/products/${product._id}`);
+
+    const { data } = await axios.get(`/api/prod/${product._id}`);
     if (data.countInStock < quantity) {
       window.alert('Sorry. Product is out of stock');
       return;
