@@ -35,7 +35,7 @@ function App() {
             <Routes>
             <Route path="/products/:slug" element={<ProductScreen />} />
             <Route path="/" element={<HomeScreen />} />
-            <Route path="/cart" element={<CartScreenScreen />} />
+            <Route path="/cart" element={<CartScreen />} />
              
             </Routes>
           </Container>
