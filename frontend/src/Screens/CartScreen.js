@@ -1,4 +1,3 @@
-
 import { useContext } from 'react';
 import { Store } from '../Store';
 import { Helmet } from 'react-helmet-async';
@@ -64,36 +63,34 @@ export default function CartScreen() {
                       <Link to={`/product/${item.slug}`}>{item.name}</Link>
                     </Col>
                     <Col md={3}>
-                      <Button variant="light" disabled={item.quantity === 1}>
-                      <Button
-                        onClick={() =>
+                      <Button 
+                       onClick={() =>
                           updateCartHandler(item, item.quantity - 1)
                         }
-                        variant="light"
-                        disabled={item.quantity === 1}
-                      >
+                       variant="light" disabled={item.quantity === 1}>
                         <i className="fas fa-minus-circle"></i>
                       </Button>{' '}
                       <span>{item.quantity}</span>{' '}
                       <Button
-                        variant="light"
                         onClick={() =>
                           updateCartHandler(item, item.quantity + 1)
                         }
-                        disabled={item.quantity === item.countInStock}
+                         variant="light" disabled={item.quantity === item.countInStock}
                       >
                         <i className="fas fa-plus-circle"></i>
                       </Button>
                     </Col>
                     <Col md={3}>${item.price}</Col>
                     <Col md={2}>
-                      <Button variant="light">
-                      <Button
+                      <Button 
+                      
                         onClick={() => removeItemHandler(item)}
-                        variant="light"
-                      >
+                       
+                      >  
+                      variant="light" disabled={item.quantity === item.countInStock}
                         <i className="fas fa-trash"></i>
                       </Button>
+
                     </Col>
                   </Row>
                 </ListGroup.Item>
@@ -131,4 +128,4 @@ export default function CartScreen() {
       </Row>
     </div>
   );
-}
+                      }
