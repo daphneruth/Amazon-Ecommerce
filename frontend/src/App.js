@@ -6,8 +6,11 @@ import Container from "react-bootstrap/Navbar";
 import { LinkContainer } from "react-router-bootstrap";
 import { Nav } from "react-bootstrap";
 import CartScreen from "./Screens/CartScreen";
+import { useContext } from "react";
 
 function App() {
+  const { state } = useContext(Store);
+  const { cart } = state;
   return (
     <BrowserRouter>
       <div className="d-flex  flex-column site-container">
