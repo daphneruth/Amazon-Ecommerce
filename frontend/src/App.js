@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import HomeScreen from "./Screens/HomeScreen";
 import ProductScreen from "./Screens/ProductScreen";
 import Navbar from "react-bootstrap/Navbar";
@@ -8,6 +8,10 @@ import { Nav } from "react-bootstrap";
 import CartScreen from "./Screens/CartScreen";
 import { useContext } from "react";
 import SigninScreen from "./Screens/SigninScreen";
+import { Store } from "./Store";
+
+import Badge from "react-bootstrap/Badge";
+
 
 function App() {
   const { state } = useContext(Store);
