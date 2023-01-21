@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "amazon",
   "main": "index.js",
-  "scripts": {
-    "start": "concurrently \"nodemon start server.js\" \"react-scripts start\""
-    
+  
+    "scripts": {
+      "client": "cd frontend && npm dev-server",
+      "server": "nodemon server.js",
+      "dev": "concurrently --kill-others-on-fail \"start server\" \"start client\""
   },
   "repository": {
     "type": "git",
