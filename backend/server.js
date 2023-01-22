@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 dotenv.config();
-//mongoose.set('strictQuery', true)
+mongoose.set('strictQuery', true)
 
 mongoose
   .connect(process.env.MONGODB_URI)
