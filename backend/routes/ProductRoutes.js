@@ -8,12 +8,21 @@ productRouter.get('/', async (req, res) => {
   res.send(products);
 });
 
-productRouter.get('/slug/:slug', async (req, res) => {
-  const product = await Product.findOne({ slug: req.params.slug });
+// productRouter.get('/slug/:slug', async (req, res) => {
+//   const product = await Product.findOne({ slug: req.params.slug });
+//   if (product) {
+//     res.send(product);
+//   } else {
+//     res.status(404).send({ message: 'Product Not Found' });
+//   }
+// });
+productRouter.get("/slug/:slug", async (req, res) => {
+  const product = await Product.findOne({ slug: { $eq: req.params.slug } });
+
   if (product) {
     res.send(product);
   } else {
-    res.status(404).send({ message: 'Product Not Found' });
+    res.status(404).send({ message: "Product not found" });
   }
 });
 productRouter.get('/:id', async (req, res) => {
