@@ -21,6 +21,16 @@ orderRouter.post(
     res.status(201).send({ message: 'New Order Created', order });
   })
 );
+
+orderRouter.get(
+  '/mine',
+  isAuth,
+  expressAsyncHandler(async (req, res) => {
+    const orders = await Order.find({ user: req.user._id });
+    res.send(orders);
+  })
+);
+
 orderRouter.get(
   '/:id',
   isAuth,
@@ -33,7 +43,6 @@ orderRouter.get(
     }
   })
 );
-
 orderRouter.put(
   '/:id/pay',
   isAuth,
@@ -48,7 +57,6 @@ orderRouter.put(
         update_time: req.body.update_time,
         email_address: req.body.email_address,
       };
-
       const updatedOrder = await order.save();
       res.send({ message: 'Order Paid', order: updatedOrder });
     } else {
@@ -56,5 +64,4 @@ orderRouter.put(
     }
   })
 );
-
 export default orderRouter;
