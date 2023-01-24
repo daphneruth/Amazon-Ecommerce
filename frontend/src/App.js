@@ -1,97 +1,97 @@
-import Axios from 'axios';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import HomeScreen from './screens/HomeScreen';
+import ProductScreen from './screens/ProductScreen';
+import Navbar from 'react-bootstrap/Navbar';
+import Badge from 'react-bootstrap/Badge';
+import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import { Helmet } from 'react-helmet-async';
-import { useContext, useEffect, useState } from 'react';
-import { Store} from './Store'
-import { toast } from 'react-toastify';
-import { getError } from './utils';
+import { LinkContainer } from 'react-router-bootstrap';
+import { useContext } from 'react';
+import { Store } from './Store';
+import CartScreen from './screens/CartScreen';
+import SigninScreen from './screens/SigninScreen';
+import ShippingAddressScreen from './screens/ShippingAddressScreen';
+import SignupScreen from './screens/SignupScreen';
+import PaymentMethodScreen from './screens/PaymentMethodScreen';
 
-export default function SignupScreen() {
-  const navigate = useNavigate();
-  const { search } = useLocation();
-  const redirectInUrl = new URLSearchParams(search).get('redirect');
-  const redirect = redirectInUrl ? redirectInUrl : '/';
-
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-
+function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
-  const { userInfo } = state;
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    if (password !== confirmPassword) {
-      toast.error('Passwords do not match');
-      return;
-    }
-    try {
-      const { data } = await Axios.post('/api/users/signup', {
-        name,
-        email,
-        password,
-      });
-      ctxDispatch({ type: 'USER_SIGNIN', payload: data });
-      localStorage.setItem('userInfo', JSON.stringify(data));
-      navigate(redirect || '/');
-    } catch (err) {
-      toast.error(getError(err));
-    }
+  const { cart, userInfo } = state;
+  const signoutHandler = () => {
+    ctxDispatch({ type: 'USER_SIGNOUT' });
+    localStorage.removeItem('userInfo');
+    localStorage.removeItem('shippingAddress');
+    localStorage.removeItem('paymentMethod');
   };
-
-  useEffect(() => {
-    if (userInfo) {
-      navigate(redirect);
-    }
-  }, [navigate, redirect, userInfo]);
-
   return (
-    <Container className="small-container">
-      <Helmet>
-        <title>Sign Up</title>
-      </Helmet>
-      <h1 className="my-3">Sign Up</h1>
-      <Form onSubmit={submitHandler}>
-        <Form.Group className="mb-3" controlId="name">
-          <Form.Label>Name</Form.Label>
-          <Form.Control onChange={(e) => setName(e.target.value)} required />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            type="email"
-            required
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <Form.Group className="mb-3" controlId="confirmPassword">
-            <Form.Label>Confirm Password</Form.Label>
-            <Form.Control
-              type="password"
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-            />
-          </Form.Group>
-        </Form.Group>
-        <div className="mb-3">
-          <Button type="submit">Sign Up</Button>
-        </div>
-        <div className="mb-3">
-          Already have an account?{' '}
-          <Link to={`/signin?redirect=${redirect}`}>Sign-In</Link>
-        </div>
-      </Form>
-    </Container>
+    <BrowserRouter>
+      <div className="d-flex flex-column site-container">
+        <ToastContainer position="bottom-center" limit={1} />
+        <header>
+          <Navbar bg="dark" variant="dark">
+            <Container>
+              <LinkContainer to="/">
+                <Navbar.Brand>amazona</Navbar.Brand>
+              </LinkContainer>
+              <Nav className="me-auto">
+                <Link to="/cart" className="nav-link">
+                  Cart
+                  {cart.cartItems.length > 0 && (
+                    <Badge pill bg="danger">
+                      {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                    </Badge>
+                  )}
+                </Link>
+                {userInfo ? (
+                  <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
+                    <LinkContainer to="/profile">
+                      <NavDropdown.Item>User Profile</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to="/orderhistory">
+                      <NavDropdown.Item>Order History</NavDropdown.Item>
+                    </LinkContainer>
+                    <NavDropdown.Divider />
+                    <Link
+                      className="dropdown-item"
+                      to="#signout"
+                      onClick={signoutHandler}
+                    >
+                      Sign Out
+                    </Link>
+                  </NavDropdown>
+                ) : (
+                  <Link className="nav-link" to="/signin">
+                    Sign In
+                  </Link>
+                )}
+              </Nav>
+            </Container>
+          </Navbar>
+        </header>
+        <main>
+          <Container className="mt-3">
+            <Routes>
+              <Route path="/product/:slug" element={<ProductScreen />} />
+              <Route path="/cart" element={<CartScreen />} />
+              <Route path="/signin" element={<SigninScreen />} />
+              <Route path="/signup" element={<SignupScreen />} />
+              <Route
+                path="/shipping"
+                element={<ShippingAddressScreen />}
+              ></Route>
+              <Route path="/payment" element={<PaymentMethodScreen />}></Route>
+              <Route path="/" element={<HomeScreen />} />
+            </Routes>
+          </Container>
+        </main>
+        <footer>
+          <div className="text-center">All rights reserved</div>
+        </footer>
+      </div>
+    </BrowserRouter>
   );
 }
+export default App;
