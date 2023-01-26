@@ -10,8 +10,8 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import { toast } from 'react-toastify';
 import { getError } from '../utils';
 import { Store } from '../Store';
-import CheckoutSteps from '../components/CheckoutSteps';
-import LoadingBox from '../components/LoadingBox';
+import CheckoutSteps from '../Components/CheckoutSteps';
+import LoadingBox from '../Components/LoadingBox';
 
 const reducer = (state, action) => {
   switch (action.type) {

@@ -1,66 +1,111 @@
-import { createContext, useReducer } from 'react';
-export const Store = createContext();
-const initialState = {
-  userInfo: localStorage.getItem('userInfo')
-    ? JSON.parse(localStorage.getItem('userInfo'))
-    : null,
+import React, { useContext, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
+import { Store } from '../Store';
+import CheckoutSteps from '../Components/CheckoutSteps';
 
-  cart: {
-    shippingAddress: localStorage.getItem('shippingAddress')
-      ? JSON.parse(localStorage.getItem('shippingAddress'))
-      : {},
-    cartItems: localStorage.getItem('cartItems')
-      ? JSON.parse(localStorage.getItem('cartItems'))
-      : [],
-  },
-};
-function reducer(state, action) {
-  switch (action.type) {
-    case 'CART_ADD_ITEM':
-      // add to cart
-      const newItem = action.payload;
-      const existItem = state.cart.cartItems.find(
-        (item) => item._id === newItem._id
-      );
-      const cartItems = existItem
-        ? state.cart.cartItems.map((item) =>
-            item._id === existItem._id ? newItem : item
-          )
-        : [...state.cart.cartItems, newItem];
-      localStorage.setItem('cartItems', JSON.stringify(cartItems));
-      return { ...state, cart: { ...state.cart, cartItems } };
-    case 'CART_REMOVE_ITEM': {
-      const cartItems = state.cart.cartItems.filter(
-        (item) => item._id !== action.payload._id
-      );
-      localStorage.setItem('cartItems', JSON.stringify(cartItems));
-      return { ...state, cart: { ...state.cart, cartItems } };
+export default function ShippingAddressScreen() {
+  const navigate = useNavigate();
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const {
+    userInfo,
+    cart: { shippingAddress },
+  } = state;
+  const [fullName, setFullName] = useState(shippingAddress.fullName || '');
+  const [address, setAddress] = useState(shippingAddress.address || '');
+  const [city, setCity] = useState(shippingAddress.city || '');
+  const [postalCode, setPostalCode] = useState(
+    shippingAddress.postalCode || ''
+  );
+  useEffect(() => {
+    if (!userInfo) {
+      navigate('/signin?redirect=/shipping');
     }
-    case 'USER_SIGNIN':
-      return { ...state, userInfo: action.payload };
-    case 'USER_SIGNOUT':
-      return {
-        ...state,
-        userInfo: null,
-        cart: {
-          cartItems: [],
-          shippingAddress: {},
-        },
-      };
-    case 'SAVE_SHIPPING_ADDRESS':
-      return {
-        ...state,
-        cart: {
-          ...state.cart,
-          shippingAddress: action.payload,
-        },
-      };
-    default:
-      return state;
-  }
-}
-export function StoreProvider(props) {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const value = { state, dispatch };
-  return <Store.Provider value={value}>{props.children} </Store.Provider>;
+  }, [userInfo, navigate]);
+  const [country, setCountry] = useState(shippingAddress.country || '');
+  const submitHandler = (e) => {
+    e.preventDefault();
+    ctxDispatch({
+      type: 'SAVE_SHIPPING_ADDRESS',
+      payload: {
+        fullName,
+        address,
+        city,
+        postalCode,
+        country,
+      },
+    });
+    localStorage.setItem(
+      'shippingAddress',
+      JSON.stringify({
+        fullName,
+        address,
+        city,
+        postalCode,
+        country,
+      })
+    );
+    navigate('/payment');
+  };
+  return (
+    <div>
+      <Helmet>
+        <title>Shipping Address</title>
+      </Helmet>
+
+      <CheckoutSteps step1 step2></CheckoutSteps>
+      <div className="container small-container">
+        <h1 className="my-3">Shipping Address</h1>
+        <Form onSubmit={submitHandler}>
+          <Form.Group className="mb-3" controlId="fullName">
+            <Form.Label>Full Name</Form.Label>
+            <Form.Control
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="address">
+            <Form.Label>Address</Form.Label>
+            <Form.Control
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="city">
+            <Form.Label>City</Form.Label>
+            <Form.Control
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="postalCode">
+            <Form.Label>Postal Code</Form.Label>
+            <Form.Control
+              value={postalCode}
+              onChange={(e) => setPostalCode(e.target.value)}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="country">
+            <Form.Label>Country</Form.Label>
+            <Form.Control
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+              required
+            />
+          </Form.Group>
+          <div className="mb-3">
+            <Button variant="primary" type="submit">
+              Continue
+            </Button>
+          </div>
+        </Form>
+      </div>
+    </div>
+  );
 }
