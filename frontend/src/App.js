@@ -21,11 +21,11 @@ import ProfileScreen from './screens/ProfileScreen';
 import Button from 'react-bootstrap/Button';
 import { getError } from './utils';
 import axios from 'axios';
-import SearchBox from './components/SearchBox';
+import SearchBox from './Components/SearchBox';
 import SearchScreen from './screens/SearchScreen';
-import ProtectedRoute from './components/ProtectedRoute';
+import ProtectedRoute from './Components/ProtectedRoute';
 import DashboardScreen from './screens/DashboardScreen';
-import AdminRoute from './components/AdminRoute';
+import AdminRoute from './Components/AdminRoute';
 
 
 function App() {
