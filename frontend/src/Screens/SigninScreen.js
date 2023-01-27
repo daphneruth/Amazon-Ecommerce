@@ -1,4 +1,4 @@
-//import { Link, useLocation } from 'react-router-dom';
+
 import Axios from 'axios';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
@@ -48,11 +48,9 @@ export default function SigninScreen() {
         <title>Sign In</title>
       </Helmet>
       <h1 className="my-3">Sign In</h1>
-      
       <Form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email</Form.Label>
-          
           <Form.Control
             type="email"
             required
@@ -61,7 +59,6 @@ export default function SigninScreen() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="password">
           <Form.Label>Password</Form.Label>
-          
           <Form.Control
             type="password"
             required
