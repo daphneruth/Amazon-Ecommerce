@@ -52,7 +52,7 @@ function reducer(state, action) {
         cart: {
           cartItems: [],
           shippingAddress: {},
-          paymentMethod: '',
+         // paymentMethod: '',
         },
       };
     case 'SAVE_SHIPPING_ADDRESS':
