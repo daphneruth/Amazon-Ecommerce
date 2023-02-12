@@ -68,4 +68,6 @@ function reducer(state, action) {
         ...state,
         cart: { ...state.cart, paymentMethod: action.payload },
       };
-    default store
+    }
+    }
+    export default Store;
