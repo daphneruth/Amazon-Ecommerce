@@ -42,7 +42,7 @@ const data = {
       category: 'Pants',
       image: '/images/p4.jpg',
       price: 65,
-      
+      image:'image/p4.jpg',
       brand: 'Puma',
       rating: 4.5,
       numReviews: 10,
