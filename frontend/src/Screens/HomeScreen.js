@@ -15,7 +15,7 @@ const reducer = (state, action) => {
     case 'FETCH_SUCCESS':
       return { ...state, products: action.payload, loading: false };
     case 'FETCH_FAIL':
-      return { ...state, loading: false, error: action.payload };
+      return { ...state,  error: action.payload };
     default:
       return state;
   }
@@ -26,7 +26,7 @@ function HomeScreen() {
     loading: true,
     error: '',
   });
-  // const [products, setProducts] = useState([]);
+   //const [products, setProducts] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       dispatch({ type: 'FETCH_REQUEST' });
